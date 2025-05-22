@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>[Bug] Cross Compilation with LLVM Toolchain doesn’t work &#8212; Bug Report 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="bug-cross-compilation-with-llvm-toolchain-doesn-t-work">
+<h1>[Bug] Cross Compilation with LLVM Toolchain doesn’t work<a class="headerlink" href="#bug-cross-compilation-with-llvm-toolchain-doesn-t-work" title="Permalink to this headline">¶</a></h1>
+<p>I wanted to cross compile a simple GLFW + GLAD app from a Windows X86_64
+Host to a Linux X86_64 Target by using a LLVM toolchain, both custom and
+builtin.To that end I acquired GLFW by cloning the repository and GLAD
+by using the generator. I used a docker container to obtain a sysroot
+containing libraries to link against. But xmake failed to build the GLFW
+package with cmake.</p>
+<div class="section" id="steps-to-reproduce">
+<h2>Steps to Reproduce<a class="headerlink" href="#steps-to-reproduce" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Acquire llvm toolchain by compiling from source</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scoop install make cmake python
+git clone --recursive git@github.com:tcottin/llvm-project.git
+<span class="nb">cd</span> llvm-project
+git switch clangd-doxygen-parser
+cmake -S llvm -B build -G Ninja ^
+    -DLLVM_ENABLE_EH<span class="o">=</span>ON ^
+    -DLLVM_ENABLE_RTTI<span class="o">=</span>ON ^
+    -DLLVM_ENABLE_ASSERTIONS<span class="o">=</span>ON ^
+    -DLLVM_TARGETS_TO_BUILD<span class="o">=</span><span class="s2">&quot;X86;ARM;AArch64;RISCV;WebAssembly&quot;</span> ^
+    -DCMAKE_BUILD_TYPE<span class="o">=</span>Release ^
+    -DLLVM_ENABLE_PROJECTS<span class="o">=</span><span class="s2">&quot;clang;lld;clang-tools-extra;lldb&quot;</span> ^
+    -DLLVM_ENABLE_RUNTIMES<span class="o">=</span><span class="s2">&quot;libcxx;compiler-rt;libcxxabi&quot;</span>
+ninja -S build -j
+cmake --install build --prefix C:/dev/llvm
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Acquire the dev branch of xmake by downloading
+<code class="docutils literal notranslate"><span class="pre">xmake-dev.win64.exe</span></code> from the <code class="docutils literal notranslate"><span class="pre">Releases</span></code> in the github
+repository and running it</p></li>
+<li><p>Acquire the sysroot by running a debian:bookworm image then
+installing dependencies with <code class="docutils literal notranslate"><span class="pre">apt</span></code>, or just use the one I provided
+at the repo</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull debian:bookworm
+docker run -it --name<span class="o">=</span>deb debian:bookworm
+apt update<span class="p">;</span> apt install apt install libc6-dev libstdc++-12-dev libc++-dev libc++abi-dev libwayland-dev
+exit<span class="p">;</span> docker <span class="nb">export</span> deb -o deb.tar
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Export the sysroot by using <code class="docutils literal notranslate"><span class="pre">7z</span></code> with admin rights</p></li>
+<li><p>Try out examples I provided</p></li>
+</ol>
+</div>
+<div class="section" id="what-do-i-expect">
+<h2>What do I expect<a class="headerlink" href="#what-do-i-expect" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>You should be able to compile the examples and see them working in a
+Linux OS Machines</p></li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Bug Report</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, mccakit.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
