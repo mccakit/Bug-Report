@@ -1,0 +1,2 @@
+libc++-14-dev: arch-dependent-file-not-in-arch-specific-directory *usr/lib/llvm-14/lib/libc++.a*
+libc++-14-dev: arch-dependent-file-not-in-arch-specific-directory *usr/lib/llvm-14/lib/libc++experimental.a*

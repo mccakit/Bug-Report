@@ -1,0 +1,10 @@
+/.
+/usr
+/usr/share
+/usr/share/doc
+/usr/share/doc/libc++-dev
+/usr/share/doc/libc++-dev/changelog.gz
+/usr/share/doc/libc++-dev/copyright
+/usr/share/lintian
+/usr/share/lintian/overrides
+/usr/share/lintian/overrides/libc++-dev
