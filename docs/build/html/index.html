@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>[Bug] Cross Compilation with LLVM Toolchain doesn’t work &#8212; Bug Report 1.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=8d563738"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="bug-cross-compilation-with-llvm-toolchain-doesn-t-work">
+<h1>[Bug] Cross Compilation with LLVM Toolchain doesn’t work<a class="headerlink" href="#bug-cross-compilation-with-llvm-toolchain-doesn-t-work" title="Link to this heading">¶</a></h1>
+<p>I wanted to cross compile a simple GLFW + GLAD app from a Windows X86_64
+Host to a Linux X86_64 Target by using a LLVM toolchain, both custom and
+builtin.To that end I acquired GLFW by cloning the repository and GLAD
+by using the generator. I used a docker container to obtain a sysroot
+containing libraries to link against. But xmake failed to build the GLFW
+package with cmake.</p>
+<section id="steps-to-reproduce">
+<h2>Steps to Reproduce<a class="headerlink" href="#steps-to-reproduce" title="Link to this heading">¶</a></h2>
+<ol class="arabic">
+<li><p>Acquire llvm toolchain by compiling from source</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scoop<span class="w"> </span>install<span class="w"> </span>make<span class="w"> </span>cmake<span class="w"> </span>python
+git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>git@github.com:tcottin/llvm-project.git
+<span class="nb">cd</span><span class="w"> </span>llvm-project
+git<span class="w"> </span>switch<span class="w"> </span>clangd-doxygen-parser
+cmake<span class="w"> </span>-S<span class="w"> </span>llvm<span class="w"> </span>-B<span class="w"> </span>build<span class="w"> </span>-G<span class="w"> </span>Ninja<span class="w"> </span>^
+<span class="w">    </span>-DLLVM_ENABLE_EH<span class="o">=</span>ON<span class="w"> </span>^
+<span class="w">    </span>-DLLVM_ENABLE_RTTI<span class="o">=</span>ON<span class="w"> </span>^
+<span class="w">    </span>-DLLVM_ENABLE_ASSERTIONS<span class="o">=</span>ON<span class="w"> </span>^
+<span class="w">    </span>-DLLVM_TARGETS_TO_BUILD<span class="o">=</span><span class="s2">&quot;X86;ARM;AArch64;RISCV;WebAssembly&quot;</span><span class="w"> </span>^
+<span class="w">    </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release<span class="w"> </span>^
+<span class="w">    </span>-DLLVM_ENABLE_PROJECTS<span class="o">=</span><span class="s2">&quot;clang;lld;clang-tools-extra;lldb&quot;</span><span class="w"> </span>^
+<span class="w">    </span>-DLLVM_ENABLE_RUNTIMES<span class="o">=</span><span class="s2">&quot;libcxx;compiler-rt;libcxxabi&quot;</span>
+ninja<span class="w"> </span>-S<span class="w"> </span>build<span class="w"> </span>-j
+cmake<span class="w"> </span>--install<span class="w"> </span>build<span class="w"> </span>--prefix<span class="w"> </span>C:/dev/llvm
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Acquire the dev branch of xmake by downloading
+<code class="docutils literal notranslate"><span class="pre">xmake-dev.win64.exe</span></code> from the <code class="docutils literal notranslate"><span class="pre">Releases</span></code> in the github
+repository and running it</p></li>
+<li><p>Acquire the sysroot by running a debian:bookworm image then
+installing dependencies with <code class="docutils literal notranslate"><span class="pre">apt</span></code>, or just use the one I provided
+at the repo</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>pull<span class="w"> </span>debian:bookworm
+docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--name<span class="o">=</span>deb<span class="w"> </span>debian:bookworm
+apt<span class="w"> </span>update<span class="p">;</span><span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libc6-dev<span class="w"> </span>libstdc++-12-dev<span class="w"> </span>libc++-dev<span class="w"> </span>libc++abi-dev<span class="w"> </span>libwayland-dev
+exit<span class="p">;</span><span class="w"> </span>docker<span class="w"> </span><span class="nb">export</span><span class="w"> </span>deb<span class="w"> </span>-o<span class="w"> </span>deb.tar
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Export the sysroot by using <code class="docutils literal notranslate"><span class="pre">7z</span></code> with admin rights</p></li>
+<li><p>Try out examples I provided</p></li>
+</ol>
+</section>
+<section id="what-do-i-expect">
+<h2>What do I expect<a class="headerlink" href="#what-do-i-expect" title="Link to this heading">¶</a></h2>
+<ol class="arabic simple">
+<li><p>You should be able to compile the examples and see them working in a
+Linux OS Machines</p></li>
+</ol>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Bug Report</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, mccakit.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
