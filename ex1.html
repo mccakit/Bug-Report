@@ -36,6 +36,69 @@
 <h1>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h1>
 <p>XMake fails to compile the example with a compiler with sysroot provided
 as flags</p>
+<div class="highlight-lua notranslate"><div class="highlight"><pre><span></span><span class="n">toolchain</span><span class="p">(</span><span class="s2">&quot;custom_llvm&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="n">set_kind</span><span class="p">(</span><span class="s2">&quot;standalone&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;cc&quot;</span><span class="p">,</span> <span class="s2">&quot;clang&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;cxx&quot;</span><span class="p">,</span> <span class="s2">&quot;clang++&quot;</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="n">is_plat</span><span class="p">(</span><span class="s2">&quot;windows&quot;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ld&quot;</span><span class="p">,</span> <span class="s2">&quot;lld-link&quot;</span><span class="p">)</span>
+    <span class="kr">elseif</span> <span class="n">is_plat</span><span class="p">(</span><span class="s2">&quot;linux&quot;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ld&quot;</span><span class="p">,</span> <span class="s2">&quot;ld.lld&quot;</span><span class="p">)</span>
+    <span class="kr">elseif</span> <span class="n">is_plat</span><span class="p">(</span><span class="s2">&quot;macos&quot;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ld&quot;</span><span class="p">,</span> <span class="s2">&quot;ld64.lld&quot;</span><span class="p">)</span>
+    <span class="kr">elseif</span> <span class="n">is_plat</span><span class="p">(</span><span class="s2">&quot;wasm&quot;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ld&quot;</span><span class="p">,</span> <span class="s2">&quot;wasm-ld&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ld&quot;</span><span class="p">,</span> <span class="s2">&quot;lld-link&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;sh&quot;</span><span class="p">,</span> <span class="s2">&quot;clang++&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ar&quot;</span><span class="p">,</span> <span class="s2">&quot;llvm-ar&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;ex&quot;</span><span class="p">,</span> <span class="s2">&quot;llvm-ar&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;strip&quot;</span><span class="p">,</span> <span class="s2">&quot;llvm-strip&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;mm&quot;</span><span class="p">,</span> <span class="s2">&quot;clang&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;mxx&quot;</span><span class="p">,</span> <span class="s2">&quot;clang++&quot;</span><span class="p">)</span>
+    <span class="n">set_toolset</span><span class="p">(</span><span class="s2">&quot;as&quot;</span><span class="p">,</span> <span class="s2">&quot;llvm-as&quot;</span><span class="p">)</span>
+    <span class="n">add_cxflags</span><span class="p">(</span><span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span><span class="p">,</span> <span class="s2">&quot;--sysroot=C:/devtools/sysroots/deb&quot;</span><span class="p">,</span> <span class="s2">&quot;-fuse-ld=lld&quot;</span><span class="p">)</span>
+    <span class="n">add_ldflags</span><span class="p">(</span><span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span><span class="p">,</span> <span class="s2">&quot;--sysroot=C:/devtools/sysroots/deb&quot;</span><span class="p">,</span> <span class="s2">&quot;-fuse-ld=lld&quot;</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="n">set_toolchains</span><span class="p">(</span><span class="s2">&quot;custom_llvm&quot;</span><span class="p">)</span>
+
+<span class="n">package</span><span class="p">(</span><span class="s2">&quot;glfw&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="n">add_deps</span><span class="p">(</span><span class="s2">&quot;cmake&quot;</span><span class="p">)</span>
+    <span class="n">set_sourcedir</span><span class="p">(</span><span class="s2">&quot;glfw&quot;</span><span class="p">)</span>
+    <span class="n">on_install</span><span class="p">(</span><span class="kr">function</span> <span class="p">(</span><span class="n">package</span><span class="p">)</span>
+        <span class="kd">local</span> <span class="n">configs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;-DGLFW_BUILD_DOCS=OFF&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-DGLFW_BUILD_TESTS=OFF&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;-DGLFW_BUILD_EXAMPLES=OFF&quot;</span>
+        <span class="p">}</span>
+        <span class="n">import</span><span class="p">(</span><span class="s2">&quot;package.tools.cmake&quot;</span><span class="p">)</span>
+        <span class="n">cmake</span><span class="p">.</span><span class="n">install</span><span class="p">(</span><span class="n">package</span><span class="p">,</span> <span class="n">configs</span><span class="p">)</span>
+    <span class="kr">end</span><span class="p">)</span>
+<span class="kr">end</span><span class="p">)</span>
+<span class="n">add_requires</span><span class="p">(</span><span class="s2">&quot;glfw&quot;</span><span class="p">)</span>
+
+<span class="n">target</span><span class="p">(</span><span class="s2">&quot;glad&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="n">set_kind</span><span class="p">(</span><span class="s2">&quot;static&quot;</span><span class="p">)</span>
+    <span class="n">add_files</span><span class="p">(</span><span class="s2">&quot;glad/src/*.c&quot;</span><span class="p">)</span>
+    <span class="n">add_headerfiles</span><span class="p">(</span><span class="s2">&quot;glad/include/glad/*.h&quot;</span><span class="p">)</span>
+    <span class="n">add_headerfiles</span><span class="p">(</span><span class="s2">&quot;glad/include/KHR/*.h&quot;</span><span class="p">)</span>
+    <span class="n">add_includedirs</span><span class="p">(</span><span class="s2">&quot;glad/include&quot;</span><span class="p">,{</span><span class="n">public</span><span class="o">=</span><span class="kc">true</span><span class="p">})</span>
+<span class="kr">end</span><span class="p">)</span>
+
+<span class="n">target</span><span class="p">(</span><span class="s2">&quot;hi&quot;</span><span class="p">,</span> <span class="kr">function</span><span class="p">()</span>
+    <span class="n">set_kind</span><span class="p">(</span><span class="s2">&quot;binary&quot;</span><span class="p">)</span>
+    <span class="n">add_files</span><span class="p">(</span><span class="s2">&quot;src/*.cpp&quot;</span><span class="p">)</span>
+    <span class="n">add_deps</span><span class="p">(</span><span class="s2">&quot;glad&quot;</span><span class="p">)</span>
+    <span class="n">add_packages</span><span class="p">(</span><span class="s2">&quot;glfw&quot;</span><span class="p">)</span>
+    <span class="kr">if</span> <span class="n">is_plat</span><span class="p">(</span><span class="s2">&quot;windows&quot;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">add_syslinks</span><span class="p">(</span><span class="s2">&quot;msvcrt&quot;</span><span class="p">,</span> <span class="s2">&quot;opengl32&quot;</span><span class="p">,</span> <span class="s2">&quot;user32&quot;</span><span class="p">,</span> <span class="s2">&quot;shell32&quot;</span><span class="p">,</span> <span class="s2">&quot;gdi32&quot;</span><span class="p">)</span>
+    <span class="kr">elseif</span> <span class="n">is_plat</span><span class="p">(</span><span class="s2">&quot;linux&quot;</span><span class="p">)</span> <span class="kr">then</span>
+        <span class="n">add_syslinks</span><span class="p">(</span><span class="s2">&quot;dl&quot;</span><span class="p">,</span> <span class="s2">&quot;pthread&quot;</span><span class="p">)</span>
+    <span class="kr">end</span>
+<span class="kr">end</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmake config --plat<span class="o">=</span>cross --cross<span class="o">=</span>x86_64-pc-linux-gnu -cvD
 </pre></div>
 </div>
