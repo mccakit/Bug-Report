@@ -32,12 +32,13 @@
             
   <div class="section" id="bug-cross-compilation-with-llvm-toolchain-doesn-t-work">
 <h1>[Bug] Cross Compilation with LLVM Toolchain doesn’t work<a class="headerlink" href="#bug-cross-compilation-with-llvm-toolchain-doesn-t-work" title="Permalink to this headline">¶</a></h1>
-<p>I wanted to cross compile a simple GLFW + GLAD app from a Windows X86_64
-Host to a Linux X86_64 Target by using a LLVM toolchain, both custom and
-builtin.To that end I acquired GLFW by cloning the repository and GLAD
-by using the generator. I used a docker container to obtain a sysroot
-containing libraries to link against. But xmake failed to build the GLFW
-package with cmake.</p>
+<p>I wanted to cross-compile a simple GLFW + GLAD application from a
+Windows x86_64 host to a Linux x86_64 target using an LLVM
+toolchain—both custom and built-in. To prepare, I cloned the GLFW
+repository and generated the GLAD loader using its official generator. I
+also used a Docker container to obtain a sysroot with the necessary
+libraries for linking. However, xmake <strong>failed</strong> to build the GLFW
+package using CMake.</p>
 <div class="section" id="steps-to-reproduce">
 <h2>Steps to Reproduce<a class="headerlink" href="#steps-to-reproduce" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
@@ -69,8 +70,8 @@ installing dependencies with <code class="docutils literal notranslate"><span cl
 at the repo</p>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker pull debian:bookworm
-docker run -it --name<span class="o">=</span>deb debian:bookworm
-apt update<span class="p">;</span> apt install apt install libc6-dev libstdc++-12-dev libc++-dev libc++abi-dev libwayland-dev
+docker run -it --name<span class="o">=</span>deb debian:bookworm<span class="p">;</span> apt update<span class="p">;</span>
+apt install apt install libc6-dev libstdc++-12-dev libc++-dev libc++abi-dev libwayland-dev
 exit<span class="p">;</span> docker <span class="nb">export</span> deb -o deb.tar
 </pre></div>
 </div>
