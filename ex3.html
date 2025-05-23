@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Example 3 &#8212; Bug Report 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Example 1" href="ex1.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="example-3">
+<h1>Example 3<a class="headerlink" href="#example-3" title="Permalink to this headline">¶</a></h1>
+<p>XMake fails to compile with the builtin llvm toolchain</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmake config --plat<span class="o">=</span>cross --cross<span class="o">=</span>x86_64-pc-linux-gnu --toolchain<span class="o">=</span>llvm --sdk<span class="o">=</span>C:/dev/sysroots/deb -cvD
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>checking <span class="k">for</span> architecture ... x86_64
+checking <span class="k">for</span> git ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\g</span>it.exe
+checkinfo: cannot runv<span class="o">(</span>gzip.exe --version<span class="o">)</span>, No such file or directory
+checking <span class="k">for</span> gzip ... no
+checking <span class="k">for</span> 7z ... C:<span class="se">\P</span>rogram Files<span class="se">\x</span>make<span class="se">\w</span>inenv<span class="se">\b</span>in<span class="se">\7</span>z
+checking <span class="k">for</span> ping ... C:<span class="se">\W</span>indows<span class="se">\S</span>ystem32<span class="se">\P</span>ING.EXE
+pinging the host<span class="o">(</span>gitlab.com<span class="o">)</span> ... <span class="m">53</span> ms
+pinging the host<span class="o">(</span>github.com<span class="o">)</span> ... <span class="m">58</span> ms
+pinging the host<span class="o">(</span>gitee.com<span class="o">)</span> ... <span class="m">65535</span> ms
+C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\g</span>it.exe rev-parse HEAD
+checking <span class="k">for</span> nim ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>im.exe
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> cl.exe ... C:<span class="se">\P</span>rogram Files <span class="o">(</span>x86<span class="o">)</span><span class="se">\M</span>icrosoft Visual Studio<span class="se">\2</span><span class="m">022</span><span class="se">\B</span>uildTools<span class="se">\V</span>C<span class="se">\T</span>ools<span class="se">\M</span>SVC<span class="se">\1</span><span class="m">4</span>.43.34808<span class="se">\b</span>in<span class="se">\H</span>ostX64<span class="se">\x</span><span class="m">64</span><span class="se">\c</span>l.exe
+checking <span class="k">for</span> Microsoft Visual Studio <span class="o">(</span>x64<span class="o">)</span> version ... <span class="m">2022</span>
+checking <span class="k">for</span> Microsoft C/C++ Compiler <span class="o">(</span>x64<span class="o">)</span> version ... <span class="m">19</span>.43.34810
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe
+finding glfw from xmake ..
+checking <span class="k">for</span> xmake::glfw ... no
+finding glfw from vcpkg ..
+finding glfw from conan ..
+checking <span class="k">for</span> glfw ... no
+note: install or modify <span class="o">(</span>m<span class="o">)</span> these packages <span class="o">(</span>pass -y to skip confirm<span class="o">)</span>?
+-&gt; glfw latest <span class="o">[</span>toolchains:<span class="s2">&quot;llvm&quot;</span><span class="o">]</span>
+please input: y <span class="o">(</span>y/n/m<span class="o">)</span>
+y
+checking <span class="k">for</span> ninja ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the c compiler <span class="o">(</span>cc<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the c++ compiler <span class="o">(</span>cxx<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the assember <span class="o">(</span>as<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> llvm-ar ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>lvm-ar.exe
+checking <span class="k">for</span> the static library archiver <span class="o">(</span>ar<span class="o">)</span> ... llvm-ar.exe
+checking <span class="k">for</span> clang++ ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe
+checking <span class="k">for</span> the linker <span class="o">(</span>ld<span class="o">)</span> ... clang++.exe
+checking <span class="k">for</span> llvm-ranlib ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>lvm-ranlib.exe
+checking <span class="k">for</span> the archive index generator <span class="o">(</span>ranlib<span class="o">)</span> ... llvm-ranlib.exe
+checking <span class="k">for</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe ... ok
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... ok
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span>
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... ok
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span>
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... ok
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span>
+checking <span class="k">for</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe ... ok
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... no
+&gt; clang++.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span>
+checkinfo: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273: clang++: warning: treating <span class="s1">&#39;c&#39;</span> input as <span class="s1">&#39;c++&#39;</span> when in C++ mode, this behavior is deprecated <span class="o">[</span>-Wdeprecated<span class="o">]</span>
+clang++: error: unable to execute command: program not executable
+clang++: error: linker <span class="nb">command</span> failed with <span class="nb">exit</span> code <span class="m">1</span> <span class="o">(</span>use -v to see invocation<span class="o">)</span>
+
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;runv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\c</span>ore<span class="se">\t</span>ools<span class="se">\g</span>cc<span class="se">\h</span>as_flags.lua:42<span class="o">]</span>:
+checking <span class="k">for</span> clang++ ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe
+checking <span class="k">for</span> the shared library linker <span class="o">(</span>sh<span class="o">)</span> ... clang++.exe
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... no
+&gt; clang++.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-shared&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span>
+checkinfo: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273: clang++: warning: treating <span class="s1">&#39;c&#39;</span> input as <span class="s1">&#39;c++&#39;</span> when in C++ mode, this behavior is deprecated <span class="o">[</span>-Wdeprecated<span class="o">]</span>
+clang++: error: unable to execute command: program not executable
+clang++: error: linker <span class="nb">command</span> failed with <span class="nb">exit</span> code <span class="m">1</span> <span class="o">(</span>use -v to see invocation<span class="o">)</span>
+
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;runv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\c</span>ore<span class="se">\t</span>ools<span class="se">\g</span>cc<span class="se">\h</span>as_flags.lua:42<span class="o">]</span>:
+checking <span class="k">for</span> cmake ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe
+C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe -DGLFW_BUILD_DOCS<span class="o">=</span>OFF -DGLFW_BUILD_TESTS<span class="o">=</span>OFF -DGLFW_BUILD_EXAMPLES<span class="o">=</span>OFF -DCMAKE_INSTALL_PREFIX<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\b</span>uild<span class="se">\.</span>packages<span class="se">\g\g</span>lfw<span class="se">\l</span>atest<span class="se">\d</span>838b2dcf55d4c1b9ec05d8a77d64c01 -DCMAKE_INSTALL_LIBDIR:PATH<span class="o">=</span>lib -G Ninja -DCMAKE_MAKE_PROGRAM<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe -DCMAKE_POSITION_INDEPENDENT_CODE<span class="o">=</span>ON -DHAVE_FLAG_SEARCH_PATHS_FIRST<span class="o">=</span><span class="m">0</span> -DCMAKE_AR<span class="o">=</span>C:/llvm/bin/llvm-ar.exe -DCMAKE_C_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_ASM_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe -DCMAKE_CXX_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_OSX_SYSROOT<span class="o">=</span> -DBUILD_SHARED_LIBS<span class="o">=</span>OFF <span class="s2">&quot;-DCMAKE_CXX_LINK_EXECUTABLE=C:/llvm/bin/clang++.exe &lt;FLAGS&gt; &lt;CMAKE_CXX_LINK_FLAGS&gt; &lt;LINK_FLAGS&gt; &lt;OBJECTS&gt; -o &lt;TARGET&gt; &lt;LINK_LIBRARIES&gt;&quot;</span> -DCMAKE_FIND_USE_INSTALL_PREFIX<span class="o">=</span><span class="m">0</span> -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY<span class="o">=</span>BOTH -DCMAKE_CXX_COMPILER<span class="o">=</span>C:/llvm/bin/clang++.exe -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM<span class="o">=</span>NEVER -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE<span class="o">=</span>BOTH -DCMAKE_SHARED_LINKER_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_SYSTEM_PROCESSOR<span class="o">=</span>x86_64 -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux -DCMAKE_FIND_USE_CMAKE_SYSTEM_PATH<span class="o">=</span><span class="m">0</span> -DCMAKE_RANLIB<span class="o">=</span>C:/llvm/bin/llvm-ranlib.exe -DCMAKE_EXE_LINKER_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_FIND_ROOT_PATH<span class="o">=</span>C:/dev/sysroots/deb -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE<span class="o">=</span>BOTH -DCMAKE_MODULE_LINKER_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_ASM_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_C_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe -DCMAKE_STATIC_LINKER_FLAGS<span class="o">=</span> -DCMAKE_POLICY_VERSION_MINIMUM<span class="o">=</span><span class="m">3</span>.5 C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\g</span>lfw
+-- The C compiler identification is Clang <span class="m">21</span>.0.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Check <span class="k">for</span> working C compiler: C:/llvm/bin/clang.exe
+-- Check <span class="k">for</span> working C compiler: C:/llvm/bin/clang.exe - broken
+CMake Error at C:/Users/cakit/scoop/apps/cmake/current/share/cmake-4.0/Modules/CMakeTestCCompiler.cmake:67 <span class="o">(</span>message<span class="o">)</span>:
+The C compiler
+
+    <span class="s2">&quot;C:/llvm/bin/clang.exe&quot;</span>
+
+is not able to compile a simple <span class="nb">test</span> program.
+
+It fails with the following output:
+
+    Change Dir: <span class="s1">&#39;C:/Users/cakit/Desktop/ex3/build/.packages/g/glfw/latest/cache/build_d838b2dc/CMakeFiles/CMakeScratch/TryCompile-ufe6sd&#39;</span>
+
+    Run Build Command<span class="o">(</span>s<span class="o">)</span>: C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe -v cmTC_7f647
+    <span class="o">[</span><span class="m">1</span>/2<span class="o">]</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe   --target<span class="o">=</span>x86_64-pc-linux-gnu  -fPIE -MD -MT CMakeFiles/cmTC_7f647.dir/testCCompiler.c.o -MF CMakeFiles<span class="se">\c</span>mTC_7f647.dir<span class="se">\t</span>estCCompiler.c.o.d -o CMakeFiles/cmTC_7f647.dir/testCCompiler.c.o -c C:/Users/cakit/Desktop/ex3/build/.packages/g/glfw/latest/cache/build_d838b2dc/CMakeFiles/CMakeScratch/TryCompile-ufe6sd/testCCompiler.c
+    <span class="o">[</span><span class="m">2</span>/2<span class="o">]</span> C:<span class="se">\W</span>INDOWS<span class="se">\s</span>ystem32<span class="se">\c</span>md.exe /C <span class="s2">&quot;cd . &amp;&amp; C:\llvm\bin\clang.exe --target=x86_64-pc-linux-gnu --target=x86_64-pc-linux-gnu CMakeFiles/cmTC_7f647.dir/testCCompiler.c.o -o cmTC_7f647   &amp;&amp; cd .&quot;</span>
+    FAILED: cmTC_7f647
+    C:<span class="se">\W</span>INDOWS<span class="se">\s</span>ystem32<span class="se">\c</span>md.exe /C <span class="s2">&quot;cd . &amp;&amp; C:\llvm\bin\clang.exe --target=x86_64-pc-linux-gnu --target=x86_64-pc-linux-gnu CMakeFiles/cmTC_7f647.dir/testCCompiler.c.o -o cmTC_7f647   &amp;&amp; cd .&quot;</span>
+    clang: error: unable to execute command: program not executable
+    clang: error: linker <span class="nb">command</span> failed with <span class="nb">exit</span> code <span class="m">1</span> <span class="o">(</span>use -v to see invocation<span class="o">)</span>
+    ninja: build stopped: subcommand failed.
+
+
+
+
+
+CMake will not be able to correctly generate this project.
+Call Stack <span class="o">(</span>most recent call first<span class="o">)</span>:
+CMakeLists.txt:3 <span class="o">(</span>project<span class="o">)</span>
+
+
+-- Configuring incomplete, errors occurred!
+error: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:378: execv<span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe -DGLFW_BUILD_DOCS<span class="o">=</span>OFF -DGLFW_BUILD_TESTS<span class="o">=</span>OFF -DGLFW_BUILD_EXAMPLES<span class="o">=</span>OFF -DCMAKE_INSTALL_PREFIX<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\b</span>uild<span class="se">\.</span>packages<span class="se">\g\g</span>lfw<span class="se">\l</span>atest<span class="se">\d</span>838b2dcf55d4c1b9ec05d8a77d64c01 -DCMAKE_INSTALL_LIBDIR:PATH<span class="o">=</span>lib -G Ninja -DCMAKE_MAKE_PROGRAM<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe -DCMAKE_POSITION_INDEPENDENT_CODE<span class="o">=</span>ON -DHAVE_FLAG_SEARCH_PATHS_FIRST<span class="o">=</span><span class="m">0</span> -DCMAKE_AR<span class="o">=</span>C:/llvm/bin/llvm-ar.exe -DCMAKE_C_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_ASM_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe -DCMAKE_CXX_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_OSX_SYSROOT<span class="o">=</span> -DBUILD_SHARED_LIBS<span class="o">=</span>OFF <span class="s2">&quot;-DCMAKE_CXX_LINK_EXECUTABLE=C:/llvm/bin/clang++.exe &lt;FLAGS&gt; &lt;CMAKE_CXX_LINK_FLAGS&gt; &lt;LINK_FLAGS&gt; &lt;OBJECTS&gt; -o &lt;TARGET&gt; &lt;LINK_LIBRARIES&gt;&quot;</span> -DCMAKE_FIND_USE_INSTALL_PREFIX<span class="o">=</span><span class="m">0</span> -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY<span class="o">=</span>BOTH -DCMAKE_CXX_COMPILER<span class="o">=</span>C:/llvm/bin/clang++.exe -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM<span class="o">=</span>NEVER -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE<span class="o">=</span>BOTH -DCMAKE_SHARED_LINKER_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_SYSTEM_PROCESSOR<span class="o">=</span>x86_64 -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux -DCMAKE_FIND_USE_CMAKE_SYSTEM_PATH<span class="o">=</span><span class="m">0</span> -DCMAKE_RANLIB<span class="o">=</span>C:/llvm/bin/llvm-ranlib.exe -DCMAKE_EXE_LINKER_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_FIND_ROOT_PATH<span class="o">=</span>C:/dev/sysroots/deb -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE<span class="o">=</span>BOTH -DCMAKE_MODULE_LINKER_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_ASM_FLAGS<span class="o">=</span>--target<span class="o">=</span>x86_64-pc-linux-gnu -DCMAKE_C_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe -DCMAKE_STATIC_LINKER_FLAGS<span class="o">=</span> -DCMAKE_POLICY_VERSION_MINIMUM<span class="o">=</span><span class="m">3</span>.5 C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\g</span>lfw<span class="o">)</span> failed<span class="o">(</span><span class="m">1</span><span class="o">)</span>
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:378<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:291<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;vrunv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:1338<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;configure&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:1380<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;install&#39;</span>
+    <span class="o">[</span>.<span class="se">\x</span>make.lua:13<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;script&#39;</span>
+    <span class="o">[</span>...dir<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\u</span>tils<span class="se">\f</span>ilter.lua:114<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;call&#39;</span>
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:470<span class="o">]</span>:
+
+<span class="o">=</span>&gt; install glfw latest .. failed
+error: @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: @programdir<span class="se">\m</span>odules<span class="se">\a</span>sync<span class="se">\r</span>unjobs.lua:331: ...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:579: install failed!
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:579<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;catch&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\t</span>ry.lua:123<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;try&#39;</span>
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:437<span class="o">]</span>:
+    <span class="o">[</span>...modules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\i</span>nstall_packages.lua:510<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;jobfunc&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\a</span>sync<span class="se">\r</span>unjobs.lua:247<span class="o">]</span>:
+
+stack traceback:
+        <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075: in <span class="k">function</span> <span class="s1">&#39;base/os.raiselevel&#39;</span>
+        <span class="o">(</span>...tail calls...<span class="o">)</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: in upvalue <span class="s1">&#39;cotask&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406: in <span class="k">function</span> &lt;@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:399&gt;
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmake config --plat<span class="o">=</span>linux --arch<span class="o">=</span>x86_64 --toolchain<span class="o">=</span>llvm --sdk<span class="o">=</span>C:/dev/sysroots/deb -cvD
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>checking <span class="k">for</span> git ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\g</span>it.exe
+checkinfo: cannot runv<span class="o">(</span>gzip.exe --version<span class="o">)</span>, No such file or directory
+checking <span class="k">for</span> gzip ... no
+checking <span class="k">for</span> 7z ... C:<span class="se">\P</span>rogram Files<span class="se">\x</span>make<span class="se">\w</span>inenv<span class="se">\b</span>in<span class="se">\7</span>z
+C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\g</span>it.exe rev-parse HEAD
+checking <span class="k">for</span> cl.exe ... C:<span class="se">\P</span>rogram Files <span class="o">(</span>x86<span class="o">)</span><span class="se">\M</span>icrosoft Visual Studio<span class="se">\2</span><span class="m">022</span><span class="se">\B</span>uildTools<span class="se">\V</span>C<span class="se">\T</span>ools<span class="se">\M</span>SVC<span class="se">\1</span><span class="m">4</span>.43.34808<span class="se">\b</span>in<span class="se">\H</span>ostX64<span class="se">\x</span><span class="m">64</span><span class="se">\c</span>l.exe
+checking <span class="k">for</span> Microsoft Visual Studio <span class="o">(</span>x64<span class="o">)</span> version ... <span class="m">2022</span>
+checking <span class="k">for</span> Microsoft C/C++ Compiler <span class="o">(</span>x64<span class="o">)</span> version ... <span class="m">19</span>.43.34810
+checking <span class="k">for</span> nim ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>im.exe
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe
+finding glfw from xmake ..
+checking <span class="k">for</span> xmake::glfw ... no
+finding glfw from vcpkg ..
+finding glfw from conan ..
+checking <span class="k">for</span> glfw ... no
+note: install or modify <span class="o">(</span>m<span class="o">)</span> these packages <span class="o">(</span>pass -y to skip confirm<span class="o">)</span>?
+-&gt; glfw latest <span class="o">[</span>toolchains:<span class="s2">&quot;llvm&quot;</span><span class="o">]</span>
+please input: y <span class="o">(</span>y/n/m<span class="o">)</span>
+y
+checking <span class="k">for</span> ninja ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the c compiler <span class="o">(</span>cc<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the c++ compiler <span class="o">(</span>cxx<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the assember <span class="o">(</span>as<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> llvm-ar ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>lvm-ar.exe
+checking <span class="k">for</span> the static library archiver <span class="o">(</span>ar<span class="o">)</span> ... llvm-ar.exe
+checking <span class="k">for</span> clang++ ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe
+checking <span class="k">for</span> the linker <span class="o">(</span>ld<span class="o">)</span> ... clang++.exe
+checking <span class="k">for</span> llvm-ranlib ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>lvm-ranlib.exe
+checking <span class="k">for</span> the archive index generator <span class="o">(</span>ranlib<span class="o">)</span> ... llvm-ranlib.exe
+checking <span class="k">for</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe ... ok
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... no
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;-m64&quot;</span>
+checkinfo: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273: clang: error: unsupported option <span class="s1">&#39;-fPIC&#39;</span> <span class="k">for</span> target <span class="s1">&#39;x86_64-pc-windows-msvc&#39;</span>
+
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;runv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\c</span>ore<span class="se">\t</span>ools<span class="se">\g</span>cc<span class="se">\h</span>as_flags.lua:42<span class="o">]</span>:
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... no
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;-m64&quot;</span>
+checkinfo: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273: clang: error: unsupported option <span class="s1">&#39;-fPIC&#39;</span> <span class="k">for</span> target <span class="s1">&#39;x86_64-pc-windows-msvc&#39;</span>
+
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;runv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\c</span>ore<span class="se">\t</span>ools<span class="se">\g</span>cc<span class="se">\h</span>as_flags.lua:42<span class="o">]</span>:
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... ok
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;-m64&quot;</span>
+checking <span class="k">for</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe ... ok
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... no
+&gt; clang++.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-m64&quot;</span> <span class="s2">&quot;-m64&quot;</span>
+checkinfo: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273: clang++: warning: treating <span class="s1">&#39;c&#39;</span> input as <span class="s1">&#39;c++&#39;</span> when in C++ mode, this behavior is deprecated <span class="o">[</span>-Wdeprecated<span class="o">]</span>
+clang++: error: unsupported option <span class="s1">&#39;-fPIC&#39;</span> <span class="k">for</span> target <span class="s1">&#39;x86_64-pc-windows-msvc&#39;</span>
+
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;runv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\c</span>ore<span class="se">\t</span>ools<span class="se">\g</span>cc<span class="se">\h</span>as_flags.lua:42<span class="o">]</span>:
+checking <span class="k">for</span> clang++ ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe
+checking <span class="k">for</span> the shared library linker <span class="o">(</span>sh<span class="o">)</span> ... clang++.exe
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... no
+&gt; clang++.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-shared&quot;</span> <span class="s2">&quot;-m64&quot;</span> <span class="s2">&quot;-m64&quot;</span>
+checkinfo: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273: clang++: warning: treating <span class="s1">&#39;c&#39;</span> input as <span class="s1">&#39;c++&#39;</span> when in C++ mode, this behavior is deprecated <span class="o">[</span>-Wdeprecated<span class="o">]</span>
+clang++: error: unsupported option <span class="s1">&#39;-fPIC&#39;</span> <span class="k">for</span> target <span class="s1">&#39;x86_64-pc-windows-msvc&#39;</span>
+
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:273<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;runv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\c</span>ore<span class="se">\t</span>ools<span class="se">\g</span>cc<span class="se">\h</span>as_flags.lua:42<span class="o">]</span>:
+checking <span class="k">for</span> cmake ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe
+C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe -DGLFW_BUILD_DOCS<span class="o">=</span>OFF -DGLFW_BUILD_TESTS<span class="o">=</span>OFF -DGLFW_BUILD_EXAMPLES<span class="o">=</span>OFF -DCMAKE_INSTALL_PREFIX<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\b</span>uild<span class="se">\.</span>packages<span class="se">\g\g</span>lfw<span class="se">\l</span>atest<span class="se">\0</span>0c4b83070f6435aa611d0b42c91d0e5 -DCMAKE_INSTALL_LIBDIR:PATH<span class="o">=</span>lib -G Ninja -DCMAKE_MAKE_PROGRAM<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe -DCMAKE_POSITION_INDEPENDENT_CODE<span class="o">=</span>ON -DCMAKE_STATIC_LINKER_FLAGS<span class="o">=</span> -DCMAKE_MODULE_LINKER_FLAGS<span class="o">=</span>-m64 -DBUILD_SHARED_LIBS<span class="o">=</span>OFF -DCMAKE_AR<span class="o">=</span>C:/llvm/bin/llvm-ar.exe -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY<span class="o">=</span>BOTH -DCMAKE_CXX_COMPILER<span class="o">=</span>C:/llvm/bin/clang++.exe -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM<span class="o">=</span>NEVER -DCMAKE_ASM_FLAGS<span class="o">=</span>-m64 -DCMAKE_FIND_USE_INSTALL_PREFIX<span class="o">=</span><span class="m">0</span> -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux -DCMAKE_FIND_USE_CMAKE_SYSTEM_PATH<span class="o">=</span><span class="m">0</span> -DCMAKE_EXE_LINKER_FLAGS<span class="o">=</span>-m64 -DCMAKE_OSX_SYSROOT<span class="o">=</span> -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE<span class="o">=</span>BOTH -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE<span class="o">=</span>BOTH -DCMAKE_SHARED_LINKER_FLAGS<span class="o">=</span>-m64 -DCMAKE_FIND_ROOT_PATH<span class="o">=</span>C:/dev/sysroots/deb -DCMAKE_SYSTEM_PROCESSOR<span class="o">=</span>x86_64 -DHAVE_FLAG_SEARCH_PATHS_FIRST<span class="o">=</span><span class="m">0</span> -DCMAKE_C_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe <span class="s2">&quot;-DCMAKE_CXX_LINK_EXECUTABLE=C:/llvm/bin/clang++.exe &lt;FLAGS&gt; &lt;CMAKE_CXX_LINK_FLAGS&gt; &lt;LINK_FLAGS&gt; &lt;OBJECTS&gt; -o &lt;TARGET&gt; &lt;LINK_LIBRARIES&gt;&quot;</span> -DCMAKE_ASM_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe -DCMAKE_CXX_FLAGS<span class="o">=</span>-m64 -DCMAKE_C_FLAGS<span class="o">=</span>-m64 -DCMAKE_RANLIB<span class="o">=</span>C:/llvm/bin/llvm-ranlib.exe -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_POLICY_VERSION_MINIMUM<span class="o">=</span><span class="m">3</span>.5 -DCMAKE_CXX_FLAGS_RELEASE<span class="o">=</span>-m64 -DCMAKE_STATIC_LINKER_FLAGS_RELEASE<span class="o">=</span> -DCMAKE_SHARED_LINKER_FLAGS_RELEASE<span class="o">=</span>-m64 -DCMAKE_EXE_LINKER_FLAGS_RELEASE<span class="o">=</span>-m64 -DCMAKE_C_FLAGS_RELEASE<span class="o">=</span>-m64 C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\g</span>lfw
+-- The C compiler identification is Clang <span class="m">21</span>.0.0 with GNU-like command-line
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - <span class="k">done</span>
+-- Check <span class="k">for</span> working C compiler: C:/llvm/bin/clang.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - <span class="k">done</span>
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking <span class="k">for</span> pthread_create in pthreads
+-- Looking <span class="k">for</span> pthread_create in pthreads - not found
+-- Looking <span class="k">for</span> pthread_create in pthread
+-- Looking <span class="k">for</span> pthread_create in pthread - not found
+-- Check <span class="k">if</span> compiler accepts -pthread
+-- Check <span class="k">if</span> compiler accepts -pthread - no
+CMake Error at C:/Users/cakit/scoop/apps/cmake/current/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake:227 <span class="o">(</span>message<span class="o">)</span>:
+Could NOT find Threads <span class="o">(</span>missing: Threads_FOUND<span class="o">)</span>
+Call Stack <span class="o">(</span>most recent call first<span class="o">)</span>:
+C:/Users/cakit/scoop/apps/cmake/current/share/cmake-4.0/Modules/FindPackageHandleStandardArgs.cmake:591 <span class="o">(</span>_FPHSA_FAILURE_MESSAGE<span class="o">)</span>
+C:/Users/cakit/scoop/apps/cmake/current/share/cmake-4.0/Modules/FindThreads.cmake:226 <span class="o">(</span>find_package_handle_standard_args<span class="o">)</span>
+CMakeLists.txt:60 <span class="o">(</span>find_package<span class="o">)</span>
+
+
+-- Configuring incomplete, errors occurred!
+error: @programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:378: execv<span class="o">(</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe -DGLFW_BUILD_DOCS<span class="o">=</span>OFF -DGLFW_BUILD_TESTS<span class="o">=</span>OFF -DGLFW_BUILD_EXAMPLES<span class="o">=</span>OFF -DCMAKE_INSTALL_PREFIX<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\b</span>uild<span class="se">\.</span>packages<span class="se">\g\g</span>lfw<span class="se">\l</span>atest<span class="se">\0</span>0c4b83070f6435aa611d0b42c91d0e5 -DCMAKE_INSTALL_LIBDIR:PATH<span class="o">=</span>lib -G Ninja -DCMAKE_MAKE_PROGRAM<span class="o">=</span>C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe -DCMAKE_POSITION_INDEPENDENT_CODE<span class="o">=</span>ON -DCMAKE_STATIC_LINKER_FLAGS<span class="o">=</span> -DCMAKE_MODULE_LINKER_FLAGS<span class="o">=</span>-m64 -DBUILD_SHARED_LIBS<span class="o">=</span>OFF -DCMAKE_AR<span class="o">=</span>C:/llvm/bin/llvm-ar.exe -DCMAKE_FIND_ROOT_PATH_MODE_LIBRARY<span class="o">=</span>BOTH -DCMAKE_CXX_COMPILER<span class="o">=</span>C:/llvm/bin/clang++.exe -DCMAKE_FIND_ROOT_PATH_MODE_PROGRAM<span class="o">=</span>NEVER -DCMAKE_ASM_FLAGS<span class="o">=</span>-m64 -DCMAKE_FIND_USE_INSTALL_PREFIX<span class="o">=</span><span class="m">0</span> -DCMAKE_SYSTEM_NAME<span class="o">=</span>Linux -DCMAKE_FIND_USE_CMAKE_SYSTEM_PATH<span class="o">=</span><span class="m">0</span> -DCMAKE_EXE_LINKER_FLAGS<span class="o">=</span>-m64 -DCMAKE_OSX_SYSROOT<span class="o">=</span> -DCMAKE_FIND_ROOT_PATH_MODE_INCLUDE<span class="o">=</span>BOTH -DCMAKE_FIND_ROOT_PATH_MODE_PACKAGE<span class="o">=</span>BOTH -DCMAKE_SHARED_LINKER_FLAGS<span class="o">=</span>-m64 -DCMAKE_FIND_ROOT_PATH<span class="o">=</span>C:/dev/sysroots/deb -DCMAKE_SYSTEM_PROCESSOR<span class="o">=</span>x86_64 -DHAVE_FLAG_SEARCH_PATHS_FIRST<span class="o">=</span><span class="m">0</span> -DCMAKE_C_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe <span class="s2">&quot;-DCMAKE_CXX_LINK_EXECUTABLE=C:/llvm/bin/clang++.exe &lt;FLAGS&gt; &lt;CMAKE_CXX_LINK_FLAGS&gt; &lt;LINK_FLAGS&gt; &lt;OBJECTS&gt; -o &lt;TARGET&gt; &lt;LINK_LIBRARIES&gt;&quot;</span> -DCMAKE_ASM_COMPILER<span class="o">=</span>C:/llvm/bin/clang.exe -DCMAKE_CXX_FLAGS<span class="o">=</span>-m64 -DCMAKE_C_FLAGS<span class="o">=</span>-m64 -DCMAKE_RANLIB<span class="o">=</span>C:/llvm/bin/llvm-ranlib.exe -DCMAKE_BUILD_TYPE<span class="o">=</span>Release -DCMAKE_POLICY_VERSION_MINIMUM<span class="o">=</span><span class="m">3</span>.5 -DCMAKE_CXX_FLAGS_RELEASE<span class="o">=</span>-m64 -DCMAKE_STATIC_LINKER_FLAGS_RELEASE<span class="o">=</span> -DCMAKE_SHARED_LINKER_FLAGS_RELEASE<span class="o">=</span>-m64 -DCMAKE_EXE_LINKER_FLAGS_RELEASE<span class="o">=</span>-m64 -DCMAKE_C_FLAGS_RELEASE<span class="o">=</span>-m64 C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x3<span class="se">\g</span>lfw<span class="o">)</span> failed<span class="o">(</span><span class="m">1</span><span class="o">)</span>
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:378<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\o</span>s.lua:291<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;vrunv&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:1338<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;configure&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:1380<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;install&#39;</span>
+    <span class="o">[</span>.<span class="se">\x</span>make.lua:13<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;script&#39;</span>
+    <span class="o">[</span>...dir<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\u</span>tils<span class="se">\f</span>ilter.lua:114<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;call&#39;</span>
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:470<span class="o">]</span>:
+
+<span class="o">=</span>&gt; install glfw latest .. failed
+error: @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: @programdir<span class="se">\m</span>odules<span class="se">\a</span>sync<span class="se">\r</span>unjobs.lua:331: ...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:579: install failed!
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:579<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;catch&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\t</span>ry.lua:123<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;try&#39;</span>
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:437<span class="o">]</span>:
+    <span class="o">[</span>...modules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\i</span>nstall_packages.lua:510<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;jobfunc&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\a</span>sync<span class="se">\r</span>unjobs.lua:247<span class="o">]</span>:
+
+stack traceback:
+        <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075: in <span class="k">function</span> <span class="s1">&#39;base/os.raiselevel&#39;</span>
+        <span class="o">(</span>...tail calls...<span class="o">)</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: in upvalue <span class="s1">&#39;cotask&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406: in <span class="k">function</span> &lt;@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:399&gt;
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Bug Report</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="report.html">Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex1.html">Example 1</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example 3</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ex1.html" title="previous chapter">Example 1</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, mccakit.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ex3.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

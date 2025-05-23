@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Example 1 &#8212; Bug Report 1.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example 3" href="ex3.html" />
+    <link rel="prev" title="Report" href="report.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="example-1">
+<h1>Example 1<a class="headerlink" href="#example-1" title="Permalink to this headline">¶</a></h1>
+<p>XMake fails to compile the example with a compiler with sysroot provided
+as flags</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmake config --plat<span class="o">=</span>cross --cross<span class="o">=</span>x86_64-pc-linux-gnu -cvD
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>checking <span class="k">for</span> architecture ... x86_64
+error: @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: @programdir<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\t</span>oolchain.lua:300: @programdir<span class="se">\t</span>oolchains<span class="se">\c</span>ross<span class="se">\c</span>heck.lua:61: cross toolchain not found!
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\t</span>oolchains<span class="se">\c</span>ross<span class="se">\c</span>heck.lua:61<span class="o">]</span>:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;xpcall&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\u</span>tils.lua:246<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\t</span>oolchain.lua:296<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;check&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\p</span>latform<span class="se">\p</span>latform.lua:276<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;check&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\a</span>ctions<span class="se">\c</span>onfig<span class="se">\m</span>ain.lua:366<span class="o">]</span>:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;xpcall&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\u</span>tils.lua:246<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\t</span>ask.lua:504<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;run&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:327<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;cotask&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406<span class="o">]</span>:
+
+stack traceback:
+        <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075: in <span class="k">function</span> <span class="s1">&#39;base/os.raiselevel&#39;</span>
+        <span class="o">(</span>...tail calls...<span class="o">)</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: in upvalue <span class="s1">&#39;cotask&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406: in <span class="k">function</span> &lt;@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:399&gt;
+PS C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x1&gt;
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>xmake config --plat<span class="o">=</span>linux --plat<span class="o">=</span>x86_64 -cvD
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>checking <span class="k">for</span> architecture ... x86_64
+error: @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: @programdir<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\t</span>oolchain.lua:300: @programdir<span class="se">\t</span>oolchains<span class="se">\c</span>ross<span class="se">\c</span>heck.lua:61: cross toolchain not found!
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\t</span>oolchains<span class="se">\c</span>ross<span class="se">\c</span>heck.lua:61<span class="o">]</span>:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;xpcall&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\u</span>tils.lua:246<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\t</span>oolchain.lua:296<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;check&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\p</span>latform<span class="se">\p</span>latform.lua:276<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;check&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\a</span>ctions<span class="se">\c</span>onfig<span class="se">\m</span>ain.lua:366<span class="o">]</span>:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;xpcall&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\u</span>tils.lua:246<span class="o">]</span>:
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\t</span>ask.lua:504<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;run&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:327<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;cotask&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406<span class="o">]</span>:
+
+stack traceback:
+        <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075: in <span class="k">function</span> <span class="s1">&#39;base/os.raiselevel&#39;</span>
+        <span class="o">(</span>...tail calls...<span class="o">)</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: in upvalue <span class="s1">&#39;cotask&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406: in <span class="k">function</span> &lt;@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:399&gt;
+PS C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\D</span>esktop<span class="se">\e</span>x1&gt; xmake config --plat<span class="o">=</span>linux --plat<span class="o">=</span>x86_64 -cvD
+checking <span class="k">for</span> architecture ... x64
+checking <span class="k">for</span> git ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\g</span>it.exe
+checkinfo: cannot runv<span class="o">(</span>gzip.exe --version<span class="o">)</span>, No such file or directory
+checking <span class="k">for</span> gzip ... no
+checking <span class="k">for</span> 7z ... C:<span class="se">\P</span>rogram Files<span class="se">\x</span>make<span class="se">\w</span>inenv<span class="se">\b</span>in<span class="se">\7</span>z
+C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\g</span>it.exe rev-parse HEAD
+checking <span class="k">for</span> cl.exe ... C:<span class="se">\P</span>rogram Files <span class="o">(</span>x86<span class="o">)</span><span class="se">\M</span>icrosoft Visual Studio<span class="se">\2</span><span class="m">022</span><span class="se">\B</span>uildTools<span class="se">\V</span>C<span class="se">\T</span>ools<span class="se">\M</span>SVC<span class="se">\1</span><span class="m">4</span>.43.34808<span class="se">\b</span>in<span class="se">\H</span>ostX64<span class="se">\x</span><span class="m">64</span><span class="se">\c</span>l.exe
+checking <span class="k">for</span> Microsoft Visual Studio <span class="o">(</span>x64<span class="o">)</span> version ... <span class="m">2022</span>
+checking <span class="k">for</span> Microsoft C/C++ Compiler <span class="o">(</span>x64<span class="o">)</span> version ... <span class="m">19</span>.43.34810
+checking <span class="k">for</span> nim ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>im.exe
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... no
+checking <span class="k">for</span> ninja ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... no
+checking <span class="k">for</span> cmake ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\c</span>make.exe
+finding glfw from xmake ..
+checking <span class="k">for</span> xmake::glfw ... no
+finding glfw from vcpkg ..
+finding glfw from conan ..
+checking <span class="k">for</span> glfw ... no
+note: install or modify <span class="o">(</span>m<span class="o">)</span> these packages <span class="o">(</span>pass -y to skip confirm<span class="o">)</span>?
+-&gt; glfw latest <span class="o">[</span>toolchains:<span class="s2">&quot;custom_llvm&quot;</span><span class="o">]</span>
+please input: y <span class="o">(</span>y/n/m<span class="o">)</span>
+y
+checking <span class="k">for</span> ninja ... C:<span class="se">\U</span>sers<span class="se">\c</span>akit<span class="se">\s</span>coop<span class="se">\s</span>hims<span class="se">\n</span>inja.exe
+checking <span class="k">for</span> clang ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe
+checking <span class="k">for</span> the c compiler <span class="o">(</span>cc<span class="o">)</span> ... clang.exe
+checking <span class="k">for</span> clang++ ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe
+checking <span class="k">for</span> the c++ compiler <span class="o">(</span>cxx<span class="o">)</span> ... clang++.exe
+checking <span class="k">for</span> llvm-as ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>lvm-as.exe
+checking <span class="k">for</span> the assember <span class="o">(</span>as<span class="o">)</span> ... llvm-as.exe
+checking <span class="k">for</span> llvm-ar ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>lvm-ar.exe
+checking <span class="k">for</span> the static library archiver <span class="o">(</span>ar<span class="o">)</span> ... llvm-ar.exe
+checking <span class="k">for</span> lld-link ... C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\l</span>ld-link.exe
+checking <span class="k">for</span> the linker <span class="o">(</span>ld<span class="o">)</span> ... lld-link.exe
+checking <span class="k">for</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang.exe ... ok
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... ok
+&gt; clang.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span> <span class="s2">&quot;--sysroot=C:/devtools/sysroots/deb&quot;</span> <span class="s2">&quot;-fuse-ld=lld&quot;</span>
+checking <span class="k">for</span> C:<span class="se">\l</span>lvm<span class="se">\b</span>in<span class="se">\c</span>lang++.exe ... ok
+checking <span class="k">for</span> flags <span class="o">(</span>-fPIC<span class="o">)</span> ... ok
+&gt; clang++.exe <span class="s2">&quot;-fPIC&quot;</span> <span class="s2">&quot;-Qunused-arguments&quot;</span> <span class="s2">&quot;--target=x86_64-pc-linux-gnu&quot;</span> <span class="s2">&quot;--sysroot=C:/devtools/sysroots/deb&quot;</span> <span class="s2">&quot;-fuse-ld=lld&quot;</span>
+error: ...amdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\i</span>mport<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\c</span>ompiler.lua:37: cannot import <span class="s2">&quot;core.tools.llvm_as&quot;</span> module!
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>...amdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\i</span>mport<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\c</span>ompiler.lua:37<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;load&#39;</span>
+    <span class="o">[</span>...amdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\i</span>mport<span class="se">\c</span>ore<span class="se">\t</span>ool<span class="se">\c</span>ompiler.lua:316<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;map_flags&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\u</span>tils<span class="se">\t</span>oolchain.lua:60<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;map_compflags_for_package&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:253<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;_get_asflags&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:670<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;_get_configs_for_cross&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:942<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;_get_configs&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:1321<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;configure&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\p</span>ackage<span class="se">\t</span>ools<span class="se">\c</span>make.lua:1380<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;install&#39;</span>
+    <span class="o">[</span>.<span class="se">\x</span>make.lua:38<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;script&#39;</span>
+    <span class="o">[</span>...dir<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\u</span>tils<span class="se">\f</span>ilter.lua:114<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;call&#39;</span>
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:470<span class="o">]</span>:
+
+<span class="o">=</span>&gt; install glfw latest .. failed
+error: @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: @programdir<span class="se">\m</span>odules<span class="se">\a</span>sync<span class="se">\r</span>unjobs.lua:331: ...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:579: install failed!
+stack traceback:
+    <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075<span class="o">]</span>:
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:579<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;catch&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\c</span>ore<span class="se">\s</span>andbox<span class="se">\m</span>odules<span class="se">\t</span>ry.lua:123<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;try&#39;</span>
+    <span class="o">[</span>...<span class="se">\m</span>odules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\a</span>ctions<span class="se">\i</span>nstall.lua:437<span class="o">]</span>:
+    <span class="o">[</span>...modules<span class="se">\p</span>rivate<span class="se">\a</span>ction<span class="se">\r</span>equire<span class="se">\i</span>mpl<span class="se">\i</span>nstall_packages.lua:510<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;jobfunc&#39;</span>
+    <span class="o">[</span>@programdir<span class="se">\m</span>odules<span class="se">\a</span>sync<span class="se">\r</span>unjobs.lua:247<span class="o">]</span>:
+
+stack traceback:
+        <span class="o">[</span>C<span class="o">]</span>: in <span class="k">function</span> <span class="s1">&#39;error&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\o</span>s.lua:1075: in <span class="k">function</span> <span class="s1">&#39;base/os.raiselevel&#39;</span>
+        <span class="o">(</span>...tail calls...<span class="o">)</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\m</span>ain.lua:329: in upvalue <span class="s1">&#39;cotask&#39;</span>
+        @programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:406: in <span class="k">function</span> &lt;@programdir<span class="se">\c</span>ore<span class="se">\b</span>ase<span class="se">\s</span>cheduler.lua:399&gt;
+warning: we cannot load toolchain<span class="o">(</span>zig<span class="o">)</span>, because it has been not checked yet!
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Bug Report</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="report.html">Report</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ex3.html">Example 3</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="report.html" title="previous chapter">Report</a></li>
+      <li>Next: <a href="ex3.html" title="next chapter">Example 3</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2025, mccakit.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ex1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
