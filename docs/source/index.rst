@@ -2,12 +2,13 @@
  [Bug] Cross Compilation with LLVM Toolchain doesn't work
 ##########################################################
 
-I wanted to cross compile a simple GLFW + GLAD app from a Windows X86_64
-Host to a Linux X86_64 Target by using a LLVM toolchain, both custom and
-builtin.To that end I acquired GLFW by cloning the repository and GLAD
-by using the generator. I used a docker container to obtain a sysroot
-containing libraries to link against. But xmake failed to build the GLFW
-package with cmake.
+I wanted to cross-compile a simple GLFW + GLAD application from a
+Windows x86_64 host to a Linux x86_64 target using an LLVM
+toolchain—both custom and built-in. To prepare, I cloned the GLFW
+repository and generated the GLAD loader using its official generator. I
+also used a Docker container to obtain a sysroot with the necessary
+libraries for linking. However, xmake **failed** to build the GLFW
+package using CMake.
 
 ********************
  Steps to Reproduce
@@ -43,8 +44,8 @@ package with cmake.
       .. code:: bash
 
          docker pull debian:bookworm
-         docker run -it --name=deb debian:bookworm
-         apt update; apt install apt install libc6-dev libstdc++-12-dev libc++-dev libc++abi-dev libwayland-dev
+         docker run -it --name=deb debian:bookworm; apt update;
+         apt install apt install libc6-dev libstdc++-12-dev libc++-dev libc++abi-dev libwayland-dev
          exit; docker export deb -o deb.tar
 
 #. Export the sysroot by using ``7z`` with admin rights
